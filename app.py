@@ -202,7 +202,6 @@ HTML_FRONTEND = """
 
 @app.route('/')
 def index():
-    # Enviamos los datos limpios a la interfaz responsiva
     return render_template_string(HTML_FRONTEND, movies=PELICULAS_BASE)
 
 if __name__ == '__main__':
