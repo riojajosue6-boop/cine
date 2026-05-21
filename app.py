@@ -54,7 +54,7 @@ RECURSOS_BASE = [
         "icono": "https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?w=400&auto=format&fit=crop&q=80",
         
         # 🎯 NOTA LA DIFERENCIA: Este enlace termina en /preview para activar el modo lectura
-        "enlace_recurso": "https://docs.google.com/gview?embedded=true&url=https://drive.google.com/uc?export=download&id=16TB1Z4UyxhYUeAAkJ0UCh4THHLPYzkOI",
+        "enlace_recurso": "https://f005.backblazeb2.com/file/Material-recursos/Material-PDF/EBOOK_COMO_VENDER_CUANDO_NADIE_ESTA_COMPRANDO_2_.pdf",
     }
 ]
 
