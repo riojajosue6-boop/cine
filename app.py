@@ -23,7 +23,7 @@ RECURSOS_BASE = [
         "titulo": "El Hombre Más Rico de Babilonia",
         "descripcion": "Lección de audio sobre las leyes del oro. Escucha directa desde la aplicación.",
         "icono": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&auto=format&fit=crop&q=80",
-        "enlace_recurso": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" # Audio demo de prueba rápida
+        "enlace_recurso": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
     },
     # 3. CATEGORÍA: VIDEO
     {
@@ -33,7 +33,7 @@ RECURSOS_BASE = [
         "titulo": "Estrategia de Ventas Hotmart",
         "descripcion": "Masterclass ejecutiva para estructurar embudos de venta orgánica de alta conversión.",
         "icono": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=400&auto=format&fit=crop&q=80",
-        "enlace_recurso": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" # Video demo mp4 ligero
+        "enlace_recurso": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
     },
     # 4. CATEGORÍA: PDF
     {
@@ -43,11 +43,10 @@ RECURSOS_BASE = [
         "titulo": "50 Ganchos Virales TikTok",
         "descripcion": "Manual en PDF con copys persuasivos listos para enganchar tráfico en 3 segundos.",
         "icono": "https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?w=400&auto=format&fit=crop&q=80",
-        "enlace_recurso": "https://arxiv.org/pdf/quant-ph/0410100.pdf" # PDF demo de lectura libre
+        "enlace_recurso": "https://arxiv.org/pdf/quant-ph/0410100.pdf"
     }
 ]
 
-# INTERFAZ PROFESIONAL CON SISTEMA DE PESTAÑAS (Executive Dashboard)
 HTML_FRONTEND = """
 <!DOCTYPE html>
 <html lang="es">
@@ -76,7 +75,6 @@ HTML_FRONTEND = """
         h1 { font-size: 19px; color: #1e293b; margin: 0; font-weight: 700; }
         .subtitle { font-size: 11px; color: #64748b; margin: 4px 0 0 0; }
         
-        /* 🗂️ ESTILOS DE LAS PESTAÑAS (TABS) EJECUTIVAS */
         .tabs-menu {
             display: flex; justify-content: space-between;
             background: #f1f5f9; border-radius: 6px;
@@ -93,10 +91,8 @@ HTML_FRONTEND = """
             box-shadow: 0 1px 2px rgba(0,0,0,0.05);
         }
         
-        /* CONTENEDOR DE TARJETAS */
         .resources-grid { display: flex; flex-direction: column; gap: 12px; }
         
-        /* TARJETA COMPACTA DE OFICINA */
         .card {
             background: #ffffff; border-radius: 6px; border: 1px solid #e2e8f0;
             display: flex; flex-direction: row; overflow: hidden; min-height: 110px; height: auto;
@@ -114,6 +110,20 @@ HTML_FRONTEND = """
             display: block; text-align: center; background: #1e293b;
             color: #ffffff; text-decoration: none; padding: 7px 0;
             border-radius: 4px; font-weight: 600; font-size: 11px; margin-bottom: 2px;
+        }
+        
+        /* Contenedores para reproductores internos */
+        .media-container {
+            display: none;
+            margin-top: 8px;
+            width: 100%;
+        }
+        .video-element {
+            width: 100%;
+            border-radius: 4px;
+            border: 1px solid #cbd5e1;
+            background: #000000;
+            outline: none;
         }
     </style>
 </head>
@@ -147,7 +157,9 @@ HTML_FRONTEND = """
                     <a href="#" class="btn-action" onclick="procesarAccion('{{ item.id }}', '{{ item.categoria }}', '{{ item.enlace_recurso }}'); return false;">
                         ABRIR CONTENIDO
                     </a>
-                    <div id="audio-player-container-{{ item.id }}" style="display: none; margin-top: 8px;"></div>
+                    
+                    <div id="audio-player-container-{{ item.id }}" class="media-container"></div>
+                    <div id="video-player-container-{{ item.id }}" class="media-container"></div>
                 </div>
             </div>
         </div>
@@ -156,11 +168,10 @@ HTML_FRONTEND = """
 </div>
 
 <script>
-    // 🧠 LÓGICA DE FILTRADO EN TIEMPO REAL
     function filtrarCategoria(categoria, botonActivo) {
         let botones = document.querySelectorAll('.tab-btn');
         botones.forEach(btn => btn.classList.remove('active'));
-        botonActivo.add ? botonActivo.classList.add('active') : botonActivo.classList.add('active');
+        botonActivo.classList.add('active');
 
         let tarjetas = document.querySelectorAll('.resource-item');
         tarjetas.forEach(tarjeta => {
@@ -172,33 +183,49 @@ HTML_FRONTEND = """
         });
     }
 
-    // FUNCIÓN INTERCEPTORA MULTIMEDIA
     function procesarAccion(id, tipo, url) {
         console.log("Procesando recurso id: " + id + " de tipo: " + tipo);
         
+        // 🎧 COMPORTAMIENTO DE AUDIO
         if (tipo === 'audio') {
             var contenedor = document.getElementById('audio-player-container-' + id);
-            
             if (contenedor.style.display === 'block') {
                 contenedor.innerHTML = '';
                 contenedor.style.display = 'none';
                 return;
             }
-            
             contenedor.innerHTML = `
                 <audio controls controlsList="nodownload" style="width: 100%; height: 32px; outline: none;">
                     <source src="${url}" type="audio/mpeg">
-                    Tu navegador no soporta la reproducción de audio.
                 </audio>
             `;
             contenedor.style.display = 'block';
+            
+        // 🎬 COMPORTAMIENTO DE VIDEO
+        } else if (tipo === 'video') {
+            var contenedorVideo = document.getElementById('video-player-container-' + id);
+            if (contenedorVideo.style.display === 'block') {
+                contenedorVideo.innerHTML = '';
+                contenedorVideo.style.display = 'none';
+                return;
+            }
+            
+            // 💰 PASO PUBLICITARIO MONETAG (PREPARADO AQUÍ PARA EL FUTURO)
+            
+            // Inyectamos un reproductor de video nativo que bloquea la descarga directa
+            contenedorVideo.innerHTML = `
+                <video controls controlsList="nodownload" class="video-element">
+                    <source src="${url}" type="video/mp4">
+                    Tu navegador no soporta videos.
+                </video>
+            `;
+            contenedorVideo.style.display = 'block';
             
         } else {
             alert("Pestañas operativas. En el próximo paso programaremos el formato: " + tipo.toUpperCase());
         }
     }
 
-    // FILTRADO INICIAL AL CARGAR LA PÁGINA
     document.addEventListener("DOMContentLoaded", function() {
         let primerBoton = document.querySelector('.tab-btn');
         filtrarCategoria('excel', primerBoton);
