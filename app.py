@@ -31,7 +31,7 @@ RECURSOS_BASE = [
         "categoria": "video",
         "badge": "🎬 VIDEO CLASE",
         "titulo": "Estrategia de Ventas Hotmart",
-        "descripcion": "Masterclass ejecutiva para estructurar embudos de venta orgánica de alta conversión.",
+        "descripcion": "Masterclass ejecutiva para ajustar embudos de venta orgánica de alta conversión.",
         "icono": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=400&auto=format&fit=crop&q=80",
         "enlace_recurso": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
     },
@@ -46,15 +46,13 @@ RECURSOS_BASE = [
         "enlace_recurso": "https://pdfobject.com/pdf/sample.pdf"
     },
     {
-        "id": "pdf_02",  # Su ID único para la categoría PDF
+        "id": "pdf_02",
         "categoria": "pdf",
         "badge": "📖 GUÍA TEXTO",
-        "titulo": "COMO_VENDER_CUANDO_NADIE_ESTA_COMPRANDO_2",
+        "titulo": "Cómo Vender Cuando Nadie Está Comprando",
         "descripcion": "Si últimamente lo único que escuchas es que la gente no está comprando porque no hay forma de hacerlo cuando el mundo está parado entonces debes replantearte inmediatamente la situación. Como emprendedores o líderes de proyectos debemos tomar estos retos con pasión para tratar de generar nuevos ángulos de negocios. Esta guía te servirá como un primer paso para redireccionar los pasos que deberás dar y justamente es lo que necesitamos en este momento, un modelo que ayude a nuestra mente a entender cómo abordar la situación.",
         "icono": "https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?w=400&auto=format&fit=crop&q=80",
-        
-        # 🎯 NOTA LA DIFERENCIA: Este enlace termina en /preview para activar el modo lectura
-        "enlace_recurso": "https://f005.backblazeb2.com/file/Material-recursos/Material-PDF/EBOOK_COMO_VENDER_CUANDO_NADIE_ESTA_COMPRANDO_2_.pdf",
+        "enlace_recurso": "https://f005.backblazeb2.com/file/Material-recursos/Material-PDF/EBOOK_COMO_VENDER_CUANDO_NADIE_ESTA_COMPRANDO_2_.pdf"
     }
 ]
 
@@ -114,33 +112,33 @@ HTML_FRONTEND = """
             font-size: 9px; font-weight: bold; color: #475569;
             background: #f1f5f9; padding: 2px 6px; border-radius: 3px; align-self: flex-start;
         }
-        .card-title { font-size: 13.5px; font-weight: 600; color: #0f172a; margin: 4px 0 2px 0; }
-        .card-text { font-size: 11px; color: #627185; line-height: 1.3; margin-bottom: 8px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+        .card-title { font-size: 13.5px; font-weight: 600; color: #0f172a; margin: 4px 0 4px 0; }
+        
+        /* CORRECCIÓN DE LEGIBILIDAD EXCELENTE */
+        .card-text { 
+            font-size: 11px; 
+            color: #627185; 
+            line-height: 1.4; 
+            margin-bottom: 10px; 
+            overflow: visible; 
+            white-space: normal; 
+        }
         
         .btn-action {
             display: block; text-align: center; background: #1e293b;
             color: #ffffff; text-decoration: none; padding: 7px 0;
             border-radius: 4px; font-weight: 600; font-size: 11px; margin-bottom: 2px;
         }
-        
-        .media-container {
-            display: none;
-            margin-top: 8px;
-            width: 100%;
-        }
-        .video-element {
-            width: 100%; border-radius: 4px; border: 1px solid #cbd5e1; background: #000000; outline: none;
-        }
 
-        /* 🔍 INTERFAZ MODAL DE MODO LECTURA PANTALLA COMPLETA */
-        .pdf-modal {
+        /* MODAL MULTIMEDIA UNIFICADO */
+        .global-modal {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(15, 23, 42, 0.95); /* Fondo oscuro elegante */
+            background-color: rgba(15, 23, 42, 0.98);
             z-index: 1000;
             box-sizing: border-box;
-            padding: 10px;
+            padding: 12px;
         }
         .modal-header {
             display: flex;
@@ -150,19 +148,47 @@ HTML_FRONTEND = """
         }
         .modal-title {
             color: #ffffff; font-size: 14px; font-weight: 600;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 70%;
         }
         .close-btn {
             background: #ef4444; color: white; border: none;
             padding: 6px 14px; border-radius: 4px; font-weight: bold;
             font-size: 12px; cursor: pointer;
         }
-        .pdf-fullscreen-view {
+        .modal-body-content {
             width: 100%;
-            height: calc(100% - 45px);
-            border: none;
-            border-radius: 6px;
-            background: #ffffff;
+            height: calc(100% - 50px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
         }
+        .fullscreen-frame {
+            width: 100%; height: 100%; border: none; border-radius: 6px; background: #ffffff;
+        }
+        .fullscreen-video {
+            width: 100%; max-height: 85%; border-radius: 6px; outline: none; background: #000000;
+        }
+        .audio-modal-card {
+            background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 30px 20px;
+            width: 90%; max-width: 360px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .audio-modal-card .audio-icon { font-size: 45px; margin-bottom: 15px; }
+        .audio-modal-card .audio-title { color: #ffffff; font-size: 16px; font-weight: bold; margin-bottom: 20px; }
+        
+        .excel-modal-card {
+            background: #ffffff; border-radius: 12px; padding: 35px 25px;
+            width: 90%; max-width: 360px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+        .excel-modal-card .excel-icon { font-size: 50px; margin-bottom: 15px; }
+        .excel-modal-card .excel-title { color: #1e293b; font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+        .excel-modal-card .excel-desc { color: #64748b; font-size: 12px; margin-bottom: 25px; line-height: 1.4; }
+        .btn-excel-download {
+            display: inline-block; background: #10b981; color: white; text-decoration: none;
+            padding: 12px 24px; border-radius: 6px; font-weight: bold; font-size: 13px; transition: background 0.2s;
+        }
+        .btn-excel-download:hover { background: #059669; }
     </style>
 </head>
 <body>
@@ -192,12 +218,9 @@ HTML_FRONTEND = """
                 </div>
                 
                 <div>
-                    <a href="#" class="btn-action" onclick="procesarAccion('{{ item.id }}', '{{ item.categoria }}', '{{ item.enlace_recurso }}', '{{ item.titulo }}'); return false;">
+                    <a href="#" class="btn-action" onclick="abrirRecursoGlobal('{{ item.categoria }}', '{{ item.enlace_recurso }}', '{{ item.titulo }}', '{{ item.descripcion }}'); return false;">
                         ABRIR CONTENIDO
                     </a>
-                    
-                    <div id="audio-player-container-{{ item.id }}" class="media-container"></div>
-                    <div id="video-player-container-{{ item.id }}" class="media-container"></div>
                 </div>
             </div>
         </div>
@@ -205,12 +228,13 @@ HTML_FRONTEND = """
     </div>
 </div>
 
-<div id="global-pdf-modal" class="pdf-modal">
+<div id="recurso-modal-global" class="global-modal">
     <div class="modal-header">
-        <div id="modal-pdf-title" class="modal-title">Documento de Estudio</div>
-        <button class="close-btn" onclick="cerrarModoLectura()">✕ CERRAR</button>
+        <div id="modal-global-title" class="modal-title">Visualizador de Recurso</div>
+        <button class="close-btn" onclick="cerrarRecursoGlobal()">✕ CERRAR</button>
     </div>
-    <iframe id="modal-pdf-frame" class="pdf-fullscreen-view" src=""></iframe>
+    <div id="modal-global-body" class="modal-body-content">
+        </div>
 </div>
 
 <script>
@@ -229,51 +253,42 @@ HTML_FRONTEND = """
         });
     }
 
-    // PROCESADOR MULTIMEDIA ACTUALIZADO
-    function procesarAccion(id, tipo, url, titulo) {
-        console.log("Procesando recurso id: " + id + " de tipo: " + tipo);
+    // MANEJADOR MULTIMEDIA INTEGRADO EN VENTANA ÚNICA
+    function abrirRecursoGlobal(tipo, url, titulo, descripcion) {
+        var bodyModal = document.getElementById('modal-global-body');
+        document.getElementById('modal-global-title').innerText = titulo;
+        bodyModal.innerHTML = ''; // Reset preventivo
         
-        var containerAudio = document.getElementById('audio-player-container-' + id);
-        var containerVideo = document.getElementById('video-player-container-' + id);
-        
-        // 🎧 COMPORTAMIENTO AUDIO
-        if (tipo === 'audio') {
-            if (containerAudio.style.display === 'block') {
-                containerAudio.innerHTML = ''; containerAudio.style.display = 'none'; return;
-            }
-            containerAudio.innerHTML = `<audio controls controlsList="nodownload" style="width: 100%; height: 32px; outline: none;"><source src="${url}" type="audio/mpeg"></audio>`;
-            containerAudio.style.display = 'block';
+        if (tipo === 'pdf') {
+            bodyModal.innerHTML = `<iframe class="fullscreen-frame" src="${url}"></iframe>`;
             
-        // 🎬 COMPORTAMIENTO VIDEO
         } else if (tipo === 'video') {
-            if (containerVideo.style.display === 'block') {
-                containerVideo.innerHTML = ''; containerVideo.style.display = 'none'; return;
-            }
-            containerVideo.innerHTML = `<video controls controlsList="nodownload" class="video-element"><source src="${url}" type="video/mp4"></video>`;
-            containerVideo.style.display = 'block';
+            bodyModal.innerHTML = `<video controls controlsList="nodownload" autoplay class="fullscreen-video"><source src="${url}" type="video/mp4"></video>`;
             
-        // 📖 COMPORTAMIENTO PDF: MODO LECTURA PANTALLA COMPLETA SMART
-        } else if (tipo === 'pdf') {
-            
-            // 💰 AQUÍ ENTRARÁ TU DISPARADOR DE ANUNCIOS DE MONETAG EN EL FUTURO
-            
-            // Cargamos dinámicamente los datos en el modal global
-            document.getElementById('modal-pdf-title').innerText = "📖 " + titulo;
-            document.getElementById('modal-pdf-frame').src = url;
-            
-            // Desplegamos el modal cubriendo la pantalla
-            document.getElementById('global-pdf-modal').style.display = 'block';
-            
-        // 📊 COMPORTAMIENTO EXCEL
+        } else if (tipo === 'audio') {
+            bodyModal.innerHTML = `
+                <div class="audio-modal-card">
+                    <div class="audio-icon">🎧</div>
+                    <div class="audio-title">${titulo}</div>
+                    <audio controls controlsList="nodownload" autoplay style="width: 100%; outline: none;"><source src="${url}" type="audio/mpeg"></audio>
+                </div>`;
+                
         } else if (tipo === 'excel') {
-            window.open(url, '_blank');
+            bodyModal.innerHTML = `
+                <div class="excel-modal-card">
+                    <div class="excel-icon">📊</div>
+                    <div class="excel-title">${titulo}</div>
+                    <div class="excel-desc">${descripcion}</div>
+                    <a href="${url}" target="_blank" class="btn-excel-download">📥 DESCARGAR PLANTILLA EXCEL</a>
+                </div>`;
         }
+        
+        document.getElementById('recurso-modal-global').style.display = 'block';
     }
 
-    // FUNCIÓN PARA SALIR DEL MODO LECTURA
-    function cerrarModoLectura() {
-        document.getElementById('global-pdf-modal').style.display = 'none';
-        document.getElementById('modal-pdf-frame').src = ''; // Limpia la memoria del navegador
+    function cerrarRecursoGlobal() {
+        document.getElementById('recurso-modal-global').style.display = 'none';
+        document.getElementById('modal-global-body').innerHTML = ''; // Corta descargas, audios y videos en segundo plano
     }
 
     document.addEventListener("DOMContentLoaded", function() {
