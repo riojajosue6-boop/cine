@@ -54,7 +54,7 @@ RECURSOS_BASE = [
         "icono": "https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?w=400&auto=format&fit=crop&q=80",
         
         # 🎯 NOTA LA DIFERENCIA: Este enlace termina en /preview para activar el modo lectura
-        "enlace_recurso": "https://drive.google.com/file/d/16TB1Z4UyxhYUeAAkJ0UCh4THHLPYzkOI/view?usp=drive_link/preview"
+        "enlace_recurso": "https://docs.google.com/gview?embedded=true&url=https://drive.google.com/uc?export=download&id=16TB1Z4UyxhYUeAAkJ0UCh4THHLPYzkOI"
     }
 ]
 
