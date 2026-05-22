@@ -25,12 +25,14 @@ RECURSOS_BASE = [
         "titulo": "Consejos para superar depresion",
         "descripcion": "Audiolibro completo metodo para estimular el cerebro asi mejorar el aprendizaje salud y alcanzar el éxito.",
         "icono": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&auto=format&fit=crop&q=80",
-        "archivos": [
+        "archivos": 
+            [
             {"titulo": "Consejos para superar depresion", "tipo": "audio", "url": "https://f005.backblazeb2.com/file/Material-recursos/Material-AudioLibros/Consejos+para+superar+depresion.mp3"},
-
-        ]
+            ]
     },
-    /*{
+    
+   """
+    {
         "id": "au_02",
         "categoria": "audio",
         "badge": "🎧 AUDIOLIBRO",
@@ -42,7 +44,9 @@ RECURSOS_BASE = [
             {"titulo": "Capítulo 2: El hombre más rico de Babilonia", "tipo": "audio", "url": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"},
             {"titulo": "Capítulo 3: Las siete maneras de llenar una bolsa vacía", "tipo": "audio", "url": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"}
         ]
-    },*/
+    },
+    """
+    
     # 3. CATEGORÍA: VIDEO
     {
         "id": "vi_01",
