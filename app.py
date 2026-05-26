@@ -360,19 +360,19 @@ HTML_FRONTEND = """
     let cacheDescripcionCurso = "";
     let cacheArchivosCurso = [];
 
-    // CONTROL INTELIGENTE DE PUBLICIDAD POR PESTAÑA (1 Clic por pestaña por sesión)
+    // CONTROL INTELIGENTE CON MEMORIA PERMANENTE POR PESTAÑA
     function filtrarCategoria(categoria, botonActivo) {
-        // Enlace directo obtenido de tu panel de Monetag
+        // Enlace directo de Monetag
         const smartLinkRecursos = "https://omg10.com/4/11061922"; 
 
-        // Verificamos si ya cobramos esta pestaña en la sesión actual
-        const yaCobrada = sessionStorage.getItem('pestaña_cobrada_' + categoria);
+        // LEER MEMORIA PERMANENTE: Validamos si ya se cobró esta pestaña antes
+        const yaCobrada = localStorage.getItem('pestaña_permanente_' + categoria);
 
         if (!yaCobrada) {
-            // ¡Primera vez que entra en la sesión! Ejecutamos el Popunder directo
+            // Si está limpia en el historial, lanzamos el cobro seguro
             window.open(smartLinkRecursos, '_blank');
-            // Guardamos la marca para dejarlo navegar limpio de aquí en adelante
-            sessionStorage.setItem('pestaña_cobrada_' + categoria, 'true');
+            // Guardamos la marca definitiva en el disco del navegador
+            localStorage.setItem('pestaña_permanente_' + categoria, 'true');
         }
 
         // --- SISTEMA ORIGINAL DE FILTRADO (Mantenido intacto) ---
@@ -392,7 +392,6 @@ HTML_FRONTEND = """
 
     // El botón llama aquí usando el ID de forma ultra segura
     function prepararRecurso(idRecurso) {
-        // Buscamos el elemento dentro de nuestra constante nativa
         const item = baseRecursos.find(r => r.id === idRecurso);
         if (!item) return;
 
@@ -475,13 +474,12 @@ HTML_FRONTEND = """
         document.getElementById('btn-modal-back').style.display = 'none';
     }
 
-    // --- SE CORRIGE ESTA SECCIÓN PARA QUE EL COBRO NO SALTE AL CARGAR LA PÁGINA ---
+    // BLOQUEO EN EL ARRANQUE PARA LA PESTAÑA INICIAL (Excel)
     document.addEventListener("DOMContentLoaded", function() {
         let primerBoton = document.querySelector('.tab-btn');
         
-        // Bloqueamos temporalmente la marca de la primera pestaña antes del filtrado inicial
-        // para que no le salte publicidad al usuario de la nada al abrir la web
-        sessionStorage.setItem('pestaña_cobrada_excel', 'true');
+        // Bloqueamos permanentemente Excel al iniciar para que no moleste al cargar la web
+        localStorage.setItem('pestaña_permanente_excel', 'true');
         
         filtrarCategoria('excel', primerBoton);
     });
