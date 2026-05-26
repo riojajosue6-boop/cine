@@ -156,6 +156,7 @@ HTML_FRONTEND = """
 <html lang="es">
 <head>
     <meta name="monetag" content="b6437955edabbcb46ba78e6a83c5819b">
+    <script>(function(s){s.dataset.zone='11062026',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Flow Recursos Pro</title>
