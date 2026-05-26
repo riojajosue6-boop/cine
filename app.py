@@ -360,7 +360,22 @@ HTML_FRONTEND = """
     let cacheDescripcionCurso = "";
     let cacheArchivosCurso = [];
 
+    // CONTROL INTELIGENTE DE PUBLICIDAD POR PESTAÑA (1 Clic por pestaña por sesión)
     function filtrarCategoria(categoria, botonActivo) {
+        // Enlace directo obtenido de tu panel de Monetag
+        const smartLinkRecursos = "https://omg10.com/4/11061922"; 
+
+        // Verificamos si ya cobramos esta pestaña en la sesión actual
+        const yaCobrada = sessionStorage.getItem('pestaña_cobrada_' + categoria);
+
+        if (!yaCobrada) {
+            // ¡Primera vez que entra en la sesión! Ejecutamos el Popunder directo
+            window.open(smartLinkRecursos, '_blank');
+            // Guardamos la marca para dejarlo navegar limpio de aquí en adelante
+            sessionStorage.setItem('pestaña_cobrada_' + categoria, 'true');
+        }
+
+        // --- SISTEMA ORIGINAL DE FILTRADO (Mantenido intacto) ---
         let botones = document.querySelectorAll('.tab-btn');
         botones.forEach(btn => btn.classList.remove('active'));
         botonActivo.classList.add('active');
@@ -460,8 +475,14 @@ HTML_FRONTEND = """
         document.getElementById('btn-modal-back').style.display = 'none';
     }
 
+    // --- SE CORRIGE ESTA SECCIÓN PARA QUE EL COBRO NO SALTE AL CARGAR LA PÁGINA ---
     document.addEventListener("DOMContentLoaded", function() {
         let primerBoton = document.querySelector('.tab-btn');
+        
+        // Bloqueamos temporalmente la marca de la primera pestaña antes del filtrado inicial
+        // para que no le salte publicidad al usuario de la nada al abrir la web
+        sessionStorage.setItem('pestaña_cobrada_excel', 'true');
+        
         filtrarCategoria('excel', primerBoton);
     });
 </script>
