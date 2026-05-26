@@ -307,6 +307,16 @@ HTML_FRONTEND = """
 
 <div class="app-container">
     <div class="header">
+        <div style="text-align: center; margin-bottom: 15px;">
+        <a href="https://mundogrupos.com" style="display: inline-flex; align-items: center; background: #2563eb; color: white; text-decoration: none; font-size: 11px; font-weight: bold; padding: 8px 16px; border-radius: 4px; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);">
+            👋Puedes conectar con mas grupos de tu interes en el Directorio de Grupos
+        </a>
+    </div>
+    <div class="header">
+        <div style="text-align: center; margin-bottom: 15px;">
+        <a href="https://emojis.mundogrupos.com" style="display: inline-flex; align-items: center; background: #2563eb; color: white; text-decoration: none; font-size: 11px; font-weight: bold; padding: 8px 16px; border-radius: 4px; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);">
+            📈Puedes Usar la herramienta de Emojis para tus publicaciones en redes sociales
+        </a>
         <h1>Flow Recursos Pro</h1>
         <p class="subtitle">Panel Corporativo de Capacitación Digital</p>
     </div>
