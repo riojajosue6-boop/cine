@@ -307,14 +307,19 @@ HTML_FRONTEND = """
 
 <div class="app-container">
 
-<div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 22px; width: 100%;">
-        <a href="https://mundogrupos.com" style="display: flex; align-items: center; justify-content: center; background: #f8fafc; color: #334155; border: 1px solid #e2e8f0; text-decoration: none; font-size: 11px; font-weight: 600; padding: 10px; border-radius: 6px; box-shadow: 0 1px 2px rgba(0,0,0,0.02); transition: all 0.2s;">
+    <div class="header">
+        <h1>Flow Recursos Pro</h1>
+        <p class="subtitle">Panel Corporativo de Capacitación Digital</p>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 22px; width: 100%;">
+        <a href="https://mundogrupos.com" style="display: flex; align-items: center; justify-content: center; background: #f8fafc; color: #334155; border: 1px solid #e2e8f0; text-decoration: none; font-size: 11px; font-weight: 600; padding: 10px; border-radius: 6px; box-shadow: 0 1px 2px rgba(0,0,0,0.02); transition: all 0.2s; text-align: center;">
             👋 Conecta con gente de tu interes Directorio de Grupos
         </a>
-        <a href="https://emojis.mundogrupos.com" style="display: flex; align-items: center; justify-content: center; background: #f8fafc; color: #334155; border: 1px solid #e2e8f0; text-decoration: none; font-size: 11px; font-weight: 600; padding: 10px; border-radius: 6px; box-shadow: 0 1px 2px rgba(0,0,0,0.02); transition: all 0.2s;">
+        <a href="https://emojis.mundogrupos.com" style="display: flex; align-items: center; justify-content: center; background: #f8fafc; color: #334155; border: 1px solid #e2e8f0; text-decoration: none; font-size: 11px; font-weight: 600; padding: 10px; border-radius: 6px; box-shadow: 0 1px 2px rgba(0,0,0,0.02); transition: all 0.2s; text-align: center;">
             📝 Usa la Herramienta de Emojis para tus Publicaciones en redes sociales
         </a>
-    </div>>
+    </div>
 
     <div class="tabs-menu">
         <button class="tab-btn active" onclick="filtrarCategoria('excel', this)">Excel</button>
