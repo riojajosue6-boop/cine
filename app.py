@@ -347,10 +347,10 @@ HTML_FRONTEND = """
 
     <div class="interlinks-container">
         <a href="https://mundogrupos.com" class="link-btn">
-            👋 Conecta con gente de tu interes<br><b>Directorio de Grupos</b>
+              <b>👋Directorio de Grupos conecta con grupos de tu interes</b>
         </a>
         <a href="https://emojis.mundogrupos.com" class="link-btn">
-            📝 Usa la Herramienta de Emojis para tus<br><b>Publicaciones en redes sociales</b>
+             <b> 🚀💯😊 Herramienta EmojisExpress </b>
         </a>
     </div>
 
