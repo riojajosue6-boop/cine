@@ -135,7 +135,7 @@ RECURSOS_BASE = [
         "archivos": [
             {"titulo": "CÓMO CONVERTIR CON ÉXITO TU SUEÑO EN UNA EMPRESA", "tipo": "pdf", "url": "https://f005.backblazeb2.com/file/Material-recursos/Material-PDF/1001+Consejos+Para+Triunfar+Como+Emprendedor+-+Fernando+J%C3%A1uregui+_+Lourdes+Carmona+(1).pdf"}
         ]
-    }
+    },
 ]
 
 HTML_FRONTEND = """
